@@ -104,7 +104,8 @@
   .ev.e1 .top{background:linear-gradient(135deg,#FFD9E1,#FFC0CE);}
   .ev.e2 .top{background:linear-gradient(135deg,#D8CCFB,#BCA8F7);}
   .ev.e3 .top{background:linear-gradient(135deg,#BFE9F2,#8FD9EA);}
-  .ev .lbl{font-size:12px;font-weight:800;text-align:center;line-height:1.22;margin:8px 4px 3px;letter-spacing:-.02em;}
+  .ev .lbl{font-size:12px;font-weight:800;text-align:center;line-height:1.22;margin:8px 4px 3px;letter-spacing:-.02em;
+    min-height:29px;display:flex;align-items:center;justify-content:center;}
   .ev .rwd{font-size:10px;font-weight:700;color:var(--purple060);text-align:center;margin-bottom:7px;}
   .ev .cta{font-size:11px;font-weight:700;color:var(--purple060);background:var(--purple-light);
     text-align:center;padding:6px 0;margin:0 7px 8px;border-radius:var(--radius-pill);}
@@ -127,6 +128,8 @@
   .posts{padding:14px 14px 15px;}
   .posthead{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:3px;}
   .posthead .pt{font-size:15px;font-weight:800;letter-spacing:-.02em;}
+  .posthead .live{display:inline-block;width:6px;height:6px;border-radius:50%;background:#FF3D5E;
+    vertical-align:middle;margin-right:6px;position:relative;top:-1px;}
   .posthead .more{font-size:11px;font-weight:600;color:var(--text03);}
   .posts .psub{font-size:11px;color:var(--text03);margin-bottom:11px;}
   .posthero{background:#1c1d22;border-radius:14px;height:150px;position:relative;overflow:hidden;padding:15px;}
@@ -230,8 +233,8 @@
 
   const postsBlock = `
     <div class="card posts">
-      <div class="posthead"><span class="pt">핀다포스트</span><span class="more">더보기</span></div>
-      <div class="psub">금융 소식을 전달드립니다</div>
+      <div class="posthead"><span class="pt"><span class="live"></span>지금 뜨는 소식</span><span class="more">더보기</span></div>
+      <div class="psub">이번 주 새로 올라온 핀다포스트</div>
       <div class="posthero">
         <h4>새희망홀씨 대출<br/>이용기회가 확대됐어요</h4>
         <div class="flower">🌼</div>
