@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>핀다혜택 탭 · 최종 3안 비교</title>
+<style>
+  :root{
+    --purple060:#5D4CF2;
+    --purple-light:#EEEBFF;
+    --gray010:#F6F6F9;
+    --gray020:#EDEEF2;
+    --gray030:#E1E3EA;
+    --gray040:#C8CBD4;
+    --gray050:#AEB2BE;
+    --text01:#15161B;
+    --text02:#4A4D57;
+    --text03:#9498A4;
+    --white:#FFFFFF;
+    --bg:#F2F3F6;
+    --radius-card:20px;
+    --radius-pill:999px;
+    --font:'PretendardFin','Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;}
+  body{
+    font-family:var(--font);
+    background:linear-gradient(160deg,#ECEAFE 0%,#F4F5F8 45%,#EAF0FB 100%);
+    min-height:100vh;color:var(--text01);
+    padding:40px 20px 80px;display:flex;flex-direction:column;align-items:center;
+  }
+
+  .head{max-width:1100px;width:100%;margin-bottom:34px;text-align:center;}
+  .head .eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;
+    color:var(--purple060);background:var(--purple-light);padding:6px 14px;border-radius:var(--radius-pill);margin-bottom:14px;}
+  .head h1{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-bottom:10px;}
+  .head p{font-size:14px;color:var(--text02);line-height:1.6;}
+
+  .row{display:flex;gap:30px;flex-wrap:wrap;justify-content:center;align-items:flex-start;}
+  .col{display:flex;flex-direction:column;align-items:center;width:340px;position:relative;}
+  .cap{text-align:center;margin-bottom:16px;max-width:360px;}
+  .cap .tag{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--purple060);
+    padding:4px 12px;border-radius:var(--radius-pill);margin-bottom:8px;}
+  .cap .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#FF3D5E;
+    vertical-align:top;position:relative;top:-3px;margin-left:5px;}
+  /* recommended phone — very faint outline */
+  .col.rec .phone{border-color:#D9D4FB;box-shadow:0 24px 60px rgba(93,76,242,.10);}
+  .cap .name{font-size:22px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px;}
+  .cap .why{font-size:12px;color:var(--text02);line-height:1.55;}
+
+  .phone{width:340px;height:720px;background:var(--bg);border-radius:32px;
+    border:1px solid var(--gray020);box-shadow:0 20px 48px rgba(20,22,40,.13);
+    overflow:hidden;position:relative;display:flex;flex-direction:column;}
+  .statusbar{flex:0 0 auto;display:flex;justify-content:space-between;align-items:center;
+    padding:13px 24px 5px;font-size:13px;font-weight:600;background:var(--bg);z-index:20;}
+  .statusbar .right{display:flex;align-items:center;gap:5px;font-size:12px;}
+  .battery{background:#1c1d22;color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:5px;}
+  .pageheader{flex:0 0 auto;padding:8px 18px 10px;background:var(--bg);z-index:15;}
+  .pageheader h2{font-size:21px;font-weight:800;letter-spacing:-.03em;}
+  .screen{flex:1;overflow-y:auto;padding:4px 14px 14px;}
+  .screen::-webkit-scrollbar{width:0;}
+  .card{background:var(--white);border-radius:var(--radius-card);margin-bottom:12px;border:1px solid #F1F1F6;}
+
+  /* meritz banner */
+  .meritz{background:#FDEEF1;border-radius:16px;padding:14px;position:relative;overflow:hidden;margin-bottom:12px;}
+  .meritz .brand{font-size:11px;color:var(--text03);font-weight:600;margin-bottom:5px;}
+  .meritz .brand b{color:#E8344E;font-weight:800;}
+  .meritz h3{font-size:15px;font-weight:800;line-height:1.3;}
+  .meritz h3 em{color:#E8344E;font-style:normal;}
+  .meritz .legal{font-size:8px;color:var(--gray050);margin-top:7px;}
+  .meritz .env{position:absolute;right:14px;bottom:14px;font-size:28px;}
+  /* compact variant for NOW */
+  .meritz.sm{padding:10px 13px;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+  .meritz.sm .env{position:static;font-size:22px;}
+  .meritz.sm h3{font-size:13px;line-height:1.3;}
+  .meritz.sm .brand{margin-bottom:2px;font-size:10px;}
+  .meritz.sm .legal{display:none;}
+  .meritz.sm .txt{flex:1;}
+
+  /* points card with exchange */
+  .points{padding:13px 15px;display:flex;align-items:center;gap:11px;
+    background:linear-gradient(100deg,#F3F1FF,#FBFAFF);}
+  .points .pcoin{width:36px;height:36px;border-radius:50%;flex:0 0 auto;
+    background:radial-gradient(circle at 35% 30%,#FFD66B,#F5A623);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:17px;}
+  .points .pbody{flex:1;}
+  .points .pamt{font-size:20px;font-weight:800;letter-spacing:-.02em;}
+  .points .pamt span{font-size:13px;}
+  .points .psub{font-size:11px;color:var(--text03);margin-top:2px;}
+  .points .gift{flex:0 0 auto;background:var(--purple060);color:#fff;font-size:12px;font-weight:700;
+    padding:9px 13px;border-radius:var(--radius-pill);display:flex;align-items:center;gap:5px;white-space:nowrap;}
+  .points .gift svg{width:14px;height:14px;}
+
+  /* section title */
+  .sec-ttl{display:flex;align-items:center;justify-content:space-between;font-size:15px;font-weight:800;
+    margin:14px 4px 9px;letter-spacing:-.02em;}
+  .sec-ttl .l{display:flex;align-items:center;gap:6px;}
+  .sec-ttl .more{font-size:11px;font-weight:600;color:var(--text03);}
+
+  /* events grid */
+  .events{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:6px;}
+  .ev{background:var(--white);border-radius:14px;overflow:hidden;border:1px solid #F1F1F6;}
+  .ev .top{height:56px;display:flex;align-items:center;justify-content:center;font-size:23px;}
+  .ev.e1 .top{background:linear-gradient(135deg,#FFD9E1,#FFC0CE);}
+  .ev.e2 .top{background:linear-gradient(135deg,#D8CCFB,#BCA8F7);}
+  .ev.e3 .top{background:linear-gradient(135deg,#BFE9F2,#8FD9EA);}
+  .ev .lbl{font-size:12px;font-weight:800;text-align:center;line-height:1.22;margin:8px 4px 3px;letter-spacing:-.02em;}
+  .ev .rwd{font-size:10px;font-weight:700;color:var(--purple060);text-align:center;margin-bottom:7px;}
+  .ev .cta{font-size:11px;font-weight:700;color:var(--purple060);background:var(--purple-light);
+    text-align:center;padding:6px 0;margin:0 7px 8px;border-radius:var(--radius-pill);}
+
+  /* BD offer cards — clean one-line CTA */
+  .offer{display:flex;align-items:center;gap:11px;padding:13px;}
+  .offer .ico{width:42px;height:42px;border-radius:12px;flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:800;color:#fff;}
+  .offer .ico.car{background:linear-gradient(135deg,#3B6FF5,#5A87FF);}
+  .offer .ico.card{background:linear-gradient(135deg,#F45EE0,#D24BE8);}
+  .offer .ico.sbi{background:#10243F;font-size:15px;}
+  .offer .ico.ins{background:linear-gradient(135deg,#27C281,#16A36A);}
+  .offer .body{flex:1;min-width:0;}
+  .offer .body .ttl{font-size:13px;font-weight:700;line-height:1.3;letter-spacing:-.01em;}
+  .offer .body .sub{font-size:11px;color:var(--text03);margin-top:3px;}
+  .offer .act{flex:0 0 auto;background:var(--purple060);color:#fff;font-size:11px;font-weight:700;
+    padding:7px 12px;border-radius:var(--radius-pill);white-space:nowrap;}
+
+  /* 핀다포스트 content block */
+  .posts{padding:14px 14px 15px;}
+  .posthead{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:3px;}
+  .posthead .pt{font-size:15px;font-weight:800;letter-spacing:-.02em;}
+  .posthead .more{font-size:11px;font-weight:600;color:var(--text03);}
+  .posts .psub{font-size:11px;color:var(--text03);margin-bottom:11px;}
+  .posthero{background:#1c1d22;border-radius:14px;height:150px;position:relative;overflow:hidden;padding:15px;}
+  .posthero h4{color:#fff;font-size:16px;font-weight:800;line-height:1.34;letter-spacing:-.02em;}
+  .posthero .flower{position:absolute;right:16px;bottom:12px;font-size:38px;}
+  .dots{display:flex;justify-content:center;gap:5px;margin-top:10px;}
+  .dots i{width:6px;height:6px;border-radius:50%;background:var(--gray030);}
+  .dots i.on{background:var(--purple060);width:16px;border-radius:3px;}
+
+  /* bottom nav */
+  .tabbar{flex:0 0 auto;display:flex;justify-content:space-around;align-items:center;
+    padding:9px 0 18px;background:var(--white);border-top:1px solid var(--gray020);z-index:20;}
+  .tab{display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--gray050);}
+  .tab .ti{width:22px;height:22px;display:flex;align-items:center;justify-content:center;}
+  .tab .ti > svg{width:20px;height:20px;display:block;}
+  .tab .tl{font-size:10px;font-weight:600;}
+  .tab.active{color:var(--text01);}
+  .tab.active .pcircle{width:22px;height:22px;border-radius:50%;background:var(--purple060);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;}
+  .tab.active .pcircle svg{width:14px;height:14px;display:block;}
+</style>
+</head>
+<body>
+
+  <div class="head">
+    <span class="eyebrow">핀다혜택 탭 To-Be · 최종 3안</span>
+    <h1>최종 검토안 비교 · 포인트 / 혜택 / NOW</h1>
+    <p><b>1·2안</b>은 현재 구조를 유지한 채 탭명·아이콘·CTA만 정리한 <b>퀵윈</b>이고, <b>3안 NOW</b>는 광고 배너를 줄이고 <b>핀다포스트(콘텐츠)를 본문 위로</b> 끌어올린 콘텐츠 중심 재배치입니다.</p>
+  </div>
+
+  <div class="row" id="row"></div>
+
+<script>
+  const giftSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="1.5"/><path d="M3 12h18M12 8v13"/><path d="M12 8s-1.2-4-3.5-4S6 7 8.5 8M12 8s1.2-4 3.5-4S18 7 15.5 8"/></svg>';
+  const giftSm = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="1.5"/><path d="M3 12h18M12 8v13"/><path d="M12 8s-1.2-4-3.5-4S6 7 8.5 8M12 8s1.2-4 3.5-4S18 7 15.5 8"/></svg>';
+  const nowSvg = '<svg viewBox="0 0 24 24" fill="#fff" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>';
+  const homeSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 5l8 6.5"/><path d="M6 10.5V19h12v-8.5"/></svg>';
+  const allSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
+
+  const ICONS = { point:'P', benefit:giftSm, now:nowSvg };
+
+  // shared blocks
+  const meritzFull = `
+    <div class="meritz">
+      <div class="brand"><b>meritz</b> 메리츠화재 | 보장분석</div>
+      <h3><em>누적된 보험 내역 확인,</em><br/>1분만에 점검하세요!</h3>
+      <div class="legal">준법감시인 심의필 제2026-광고-1028호(2026.04.28~2027.04.27)</div>
+      <div class="env">✉️</div>
+    </div>`;
+
+  const meritzSm = `
+    <div class="meritz sm">
+      <div class="env">✉️</div>
+      <div class="txt">
+        <div class="brand"><b>meritz</b> 메리츠화재 | 보장분석</div>
+        <h3>누적된 보험 내역, <em>1분 점검</em></h3>
+      </div>
+    </div>`;
+
+  const pointsCard = `
+    <div class="card points">
+      <div class="pcoin">P</div>
+      <div class="pbody">
+        <div class="pamt">3,644 <span>P</span></div>
+        <div class="psub">모은 포인트로 상품을 교환하세요</div>
+      </div>
+      <div class="gift">${giftSvg} 상품 교환하기</div>
+    </div>`;
+
+  const eventsBlock = `
+    <div class="sec-ttl"><span class="l">🔥 진행중 이벤트</span></div>
+    <div class="events">
+      <div class="ev e1"><div class="top">🎁</div><div class="lbl">가정의달<br/>응모</div><div class="rwd">최대 5만P</div><div class="cta">응모하기</div></div>
+      <div class="ev e2"><div class="top">📅</div><div class="lbl">출석체크</div><div class="rwd">매일 +30P</div><div class="cta">출석하기</div></div>
+      <div class="ev e3"><div class="top">🎰</div><div class="lbl">랜덤<br/>포인트</div><div class="rwd">최대 1만P</div><div class="cta">돌리기</div></div>
+    </div>`;
+
+  const offersAB = `
+    <div class="card offer">
+      <div class="ico car">🚗</div>
+      <div class="body"><div class="ttl">내 차 시세의 최대 2배까지<br/>추가 대출 신청 가능해요</div><div class="sub">현대캐피탈 자동차담보대출</div></div>
+      <div class="act">광고 보면 5P</div>
+    </div>
+    <div class="card offer">
+      <div class="ico card">💳</div>
+      <div class="body"><div class="ttl">최대 19만원 캐시백</div><div class="sub">핀다 카드비교서비스 OPEN!</div></div>
+      <div class="act">광고 보면 5P</div>
+    </div>`;
+
+  const offersBottom = `
+    <div class="card offer">
+      <div class="ico sbi">2%</div>
+      <div class="body"><div class="ttl">SBI신용대출 금리할인 혜택<br/>최대 2% 금리할인 진행 중!</div><div class="sub">SBI저축은행</div></div>
+      <div class="act">광고 보면 5P</div>
+    </div>
+    <div class="card offer">
+      <div class="ico ins">✅</div>
+      <div class="body"><div class="ttl">혹시 모를 채무 위험에 대비!<br/>(e)대출안심 보장보험</div><div class="sub">BNP파리바 카디프생명</div></div>
+      <div class="act">광고 보면 5P</div>
+    </div>`;
+
+  const postsBlock = `
+    <div class="card posts">
+      <div class="posthead"><span class="pt">핀다포스트</span><span class="more">더보기</span></div>
+      <div class="psub">금융 소식을 전달드립니다</div>
+      <div class="posthero">
+        <h4>새희망홀씨 대출<br/>이용기회가 확대됐어요</h4>
+        <div class="flower">🌼</div>
+      </div>
+      <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+    </div>`;
+
+  const CANDS = [
+    {tag:'1안', name:'포인트', icon:'point', layout:'std', rec:true,
+      why:'사용 실태(적립·소비)와 1:1. 구조는 그대로, 탭명·아이콘만 포인트로 맞추고 BD 지면 CTA를 <b>"광고 보면 5P"</b> 한 줄로 정리.'},
+    {tag:'2안', name:'혜택', icon:'benefit', layout:'std',
+      why:'핀다혜택 → 혜택으로 단순화. 홈·전체와 통일성 유지, 이벤트·콘텐츠 확장까지 포괄. 동일 구조에 아이콘만 혜택(선물)로 교체.'},
+    {tag:'3안', name:'NOW', icon:'now', layout:'now',
+      why:'콘텐츠 중심 재배치. 상단 광고 배너는 <b>축소</b>, 포인트·진행중 이벤트는 유지, <b>핀다포스트를 본문 위로</b> 끌어올리고 광고 지면은 <b>최하단</b>으로.'}
+  ];
+
+  function phone(c){
+    const screen = c.layout === 'now'
+      ? meritzSm + pointsCard + eventsBlock + postsBlock + offersBottom
+      : meritzFull + pointsCard + eventsBlock + offersAB;
+    return `
+    <div class="col${c.rec ? ' rec' : ''}">
+      <div class="cap">
+        <span class="tag">${c.tag}</span>
+        <div class="name">${c.name}${c.rec ? '<span class="dot"></span>' : ''}</div>
+        <div class="why">${c.why}</div>
+      </div>
+      <div class="phone">
+        <div class="statusbar"><span>12:04</span><span class="right">📶 5G <span class="battery">100</span></span></div>
+        <div class="pageheader"><h2>${c.name}</h2></div>
+        <div class="screen">${screen}</div>
+        <div class="tabbar">
+          <div class="tab"><div class="ti">${homeSvg}</div><div class="tl">홈</div></div>
+          <div class="tab active"><div class="ti"><span class="pcircle">${ICONS[c.icon]}</span></div><div class="tl">${c.name}</div></div>
+          <div class="tab"><div class="ti">${allSvg}</div><div class="tl">전체</div></div>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  document.getElementById('row').innerHTML = CANDS.map(phone).join('');
+</script>
+</body>
+</html>
