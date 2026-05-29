@@ -157,7 +157,7 @@
   <div class="head">
     <span class="eyebrow">핀다혜택 탭 To-Be · 최종 3안</span>
     <h1>최종 3안 · 포인트 / 혜택 / NOW</h1>
-    <p><b>1·2안</b>은 <b>퀵윈</b>까지 고려하여 현재 구조를 최대한 유지한 채 탭명·아이콘·CTA까지 정리한 것이고, <b>3안</b>은 <b>핀다포스트(콘텐츠)를 중심으로</b> 재배치한 개편안입니다.</p>
+    <p><b>1·2안</b>은 <b>퀵윈</b>까지 고려하여 현재 구조를 최대한 유지한 채 탭명·아이콘·CTA까지 정리한 것이고, <b>3안</b>은 <b>핀다포스트(콘텐츠)를 비교적 상단으로 재배치</b>한 개편안입니다.</p>
   </div>
 
   <div class="row" id="row"></div>
@@ -194,7 +194,7 @@
       <div class="pcoin">P</div>
       <div class="pbody">
         <div class="pamt">3,644 <span>P</span></div>
-        <div class="psub">모은 포인트로 상품을 교환하세요</div>
+        <div class="psub">모인 포인트로<br>상품을 교환하세요</div>
       </div>
       <div class="gift">${giftSvg} 상품 교환하기</div>
     </div>`;
@@ -248,12 +248,12 @@
     {tag:'2안', name:'혜택', icon:'benefit', layout:'std',
       why:'<b>핀다혜택 → 혜택으로 단순화.</b> 홈·전체 등 다른 탭들과 통일성 유지. 추후 페이지 개편까지 고려했을 때 범용성이 높은 네이밍.'},
     {tag:'3안', name:'NOW', icon:'now', layout:'now',
-      why:'<b>지금 진행 중인 이벤트·콘텐츠 중심의 페이지 개편안.</b> 핀다포스트는 매주 새롭게 올라가는 콘텐츠로 동적 적용.'}
+      why:'<b>이벤트·콘텐츠를 비교적 상단으로 배치한 개편안.</b> 핀다포스트는 매주 새롭게 올라가는 콘텐츠로 동적 적용.'}
   ];
 
   function phone(c){
     const screen = c.layout === 'now'
-      ? meritzSm + pointsCard + eventsBlock + postsBlock + offersBottom
+      ? meritzSm + pointsCard + eventsBlock + postsBlock + offersAB
       : meritzFull + pointsCard + eventsBlock + offersAB;
     return `
     <div class="col${c.rec ? ' rec' : ''}">
